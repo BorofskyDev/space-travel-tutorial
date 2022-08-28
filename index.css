@@ -147,9 +147,13 @@ select {
     gap: var(--gap, 1rem);
 }
 
+.d-block {
+    display: block;
+}
+
 .flow>*:where(:not(:first-child)) {
     margin-top: var(--flow-space, 1rem);
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
 
 .container {
@@ -159,24 +163,37 @@ select {
 }
 
 .grid-container {
+    text-align: center;
     border: 5px solid green;
     display: grid;
+    place-items: center;
+    padding-inline: 1rem;
+}
+
+.grid-container * {
+    max-width: 50ch;
 }
 
 @media (min-width: 45em) {
     .grid-container {
+        text-align: left;
         column-gap: var(--container-gap, 2rem);
-        grid-template-columns: minmax(2em, 1fr) repeat(2, minmax(0, 40rem)) minmax(2em, 1fr);
+        grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(1rem, 1fr);
     }
 
     .grid-container>*:first-child {
         grid-column: 2;
-        outline: 2px solid red;
+        outline: 1px solid red;
     }
 
     .grid-container>*:last-child {
         grid-column: 3;
-        outline: 2px solid blue;
+        outline: 1px solid yellow;
+    }
+
+    .grid-container--home {
+        padding-bottom: max(6rem, 20vh);
+        align-items: end;
     }
 }
 
@@ -311,6 +328,7 @@ select {
 /********************/
 /* Components have larger pieces and more chunks to them */
 .large-button {
+    font-size: 2rem;
     position: relative;
     display: inline-grid;
     z-index: 1;
